@@ -1,5 +1,6 @@
 const productRoutes = require('./routes/productRoutes')
 const supplierRoutes = require('./routes/supplierRoutes')
+const categoryRoutes = require('./routes/categoryRoutes')
 /**
  * Route Mappings
  * (sails.config.routes)
@@ -14,4 +15,5 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   ...productRoutes.routes,
   ...supplierRoutes.routes,
+  ...categoryRoutes.routes,
 }
