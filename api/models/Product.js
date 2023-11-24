@@ -2,7 +2,7 @@ module.exports = {
   tableName: 'products',
   attributes: {
     name: { type: 'string', required: true },
-    code: {
+    productCode: {
       type: 'string',
       required: true,
       unique: true,

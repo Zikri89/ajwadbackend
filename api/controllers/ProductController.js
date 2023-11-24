@@ -50,8 +50,15 @@ module.exports = {
         message: 'Product created successfully',
         result: product,
       })
-    } catch (error) {
-      return res.serverError(error)
+    } catch (err) {
+      if (err.code === 'E_UNIQUE') {
+        return res.status(400).json({ error: 'Unique constraint violated.' })
+      } else if (err.code === 'E_REQUIRED') {
+        return res.status(400).json({ error: 'Required field missing.' })
+      } else {
+        // Handle other errors
+        return res.status(500).json({ error: 'Internal Server Error' })
+      }
     }
   },
 
@@ -77,8 +84,15 @@ module.exports = {
         message: 'Product updated successfully',
         result: product[0],
       })
-    } catch (error) {
-      return res.serverError(error)
+    } catch (err) {
+      if (err.code === 'E_UNIQUE') {
+        return res.status(400).json({ error: 'Unique constraint violated.' })
+      } else if (err.code === 'E_REQUIRED') {
+        return res.status(400).json({ error: 'Required field missing.' })
+      } else {
+        // Handle other errors
+        return res.status(500).json({ error: 'Internal Server Error' })
+      }
     }
   },
 
